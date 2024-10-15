@@ -6,7 +6,8 @@
 // @author       Você
 // @match        https://app.acessorias.com/sysmain.php?m=105*
 // @grant        none
-// @updateURL   https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/deleteTaskDP.user.js
+// @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/deleteTaskDP.user.js
+// @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/deleteTaskDP.user.js
 // ==/UserScript==
 
 (function() {
