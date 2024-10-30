@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      3.0
 // @description  Exclui todas as obrigações do dp na aba de empresas
-// @author       Você
+// @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/deleteTaskDP.user.js
@@ -20,7 +20,7 @@
     scriptInfo.style.display = 'none';
     scriptInfo.setAttribute('data-site', 'https://app.acessorias.com/sysmain.php?m=105*');
     scriptInfo.setAttribute('data-name', 'Excluir obrigações dp - Pessoal');
-    scriptInfo.setAttribute('data-department', 'Fiscal');
+    scriptInfo.setAttribute('data-department', 'Pessoal');
     scriptInfo.setAttribute('data-function', `
             function() {
             const divODP = document.querySelector('div#divObrDpt3 div#ODP_3');
