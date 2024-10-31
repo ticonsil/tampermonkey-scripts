@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Botão Base Scripts
 // @namespace    http://tampermonkey.net/
-// @version      2.4
+// @version      2.45
 // @description  Botão base para gerenciar scripts no Tampermonkey
 // @author       TIConsil
 // @match        *://*/*

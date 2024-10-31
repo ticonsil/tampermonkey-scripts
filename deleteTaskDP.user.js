@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Excluir obrigações dp - Pessoal
 // @namespace    http://tampermonkey.net/
-// @version      3.0
+// @version      3.01
 // @description  Exclui todas as obrigações do dp na aba de empresas
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*

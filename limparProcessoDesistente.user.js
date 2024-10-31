@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Limpar Processos Desistentes
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      2.01
 // @description  Limpar Todos os Processos Desistentes em massa
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=125*

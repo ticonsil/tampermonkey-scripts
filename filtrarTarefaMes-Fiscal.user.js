@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Filtrar Tarefas do mês - Fiscal
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      1.65
 // @description  Filtra todas as tarefas do mês atual
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=3*

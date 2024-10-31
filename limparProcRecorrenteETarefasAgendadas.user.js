@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Limpar Processos Recorrentes e Tarefas Agendadas
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      2.01
 // @description  Limpa todos as tarefas agendadas e processos recorrentes de uma empresa
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*

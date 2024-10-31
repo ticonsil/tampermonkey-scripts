@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Atualizar Dados da Empresa
 // @namespace    http://tampermonkey.net/
-// @version      5.0
+// @version      5.01
 // @description  Atualiza todos os dados da empresa
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*
