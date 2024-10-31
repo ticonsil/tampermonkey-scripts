@@ -6,6 +6,8 @@
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/limparProcRecorrenteETarefasAgendadas.user.js
+// @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/limparProcRecorrenteETarefasAgendadas.user.js
 // ==/UserScript==
 
 (function () {

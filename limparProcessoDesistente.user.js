@@ -6,6 +6,8 @@
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=125*
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/limparProcessoDesistente.user.js
+// @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/limparProcessoDesistente.user.js
 // ==/UserScript==
 
 (function() {

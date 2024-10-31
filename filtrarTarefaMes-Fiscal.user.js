@@ -3,9 +3,11 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.6
 // @description  Filtra todas as tarefas do mês atual
-// @author       Você
+// @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=3*
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/filtrarTarefaMes-Fiscal.user.js
+// @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/filtrarTarefaMes-Fiscal.user.js
 // ==/UserScript==
 (function() {
     'use strict';

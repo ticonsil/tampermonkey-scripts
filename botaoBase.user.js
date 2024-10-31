@@ -6,6 +6,8 @@
 // @author       TIConsil
 // @match        *://*/*
 // @grant        none
+// @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/botaoBase.user.js
+// @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/botaoBase.user.js
 // ==/UserScript==
 
 (function() {
