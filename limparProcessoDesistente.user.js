@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Limpar Processos Desistentes
 // @namespace    http://tampermonkey.net/
-// @version      2.01
+// @version      2.1
 // @description  Limpar Todos os Processos Desistentes em massa
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=125*
@@ -21,7 +21,6 @@
     scriptInfo.setAttribute('data-name', 'Limpar Processos Desistentes');
     scriptInfo.setAttribute('data-department', 'TI');
     scriptInfo.setAttribute('data-function', `
-        function() {
             document.addEventListener('submit', function(event) {
                 event.preventDefault();  // Evita o refresh da página
             }, true);
@@ -43,7 +42,6 @@
             }
 
             processarIds();
-
-        }`);
+    `);
     document.body.appendChild(scriptInfo);
 })();

@@ -34,7 +34,6 @@
   scriptInfo.setAttribute(
     'data-function',
     `
-function() {
             document.querySelectorAll('div#DivTar button.btn.btn-sm.btn-danger.col-xs-6.col-sm-6').forEach((button, index) => {
                 button.click();
                 document.querySelector('div.swal2-actions button.swal2-confirm.btn.btn-info.marginZ').click();
@@ -44,8 +43,5 @@ function() {
                 button.click();
                 document.querySelector('button.swal2-confirm.btn.btn-danger.marginZ').click();
             });
-        };
-
-}`
-  );
+  `);
 })();

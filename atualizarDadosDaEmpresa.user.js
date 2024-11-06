@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Atualizar Dados da Empresa
 // @namespace    http://tampermonkey.net/
-// @version      5.01
+// @version      5.1
 // @description  Atualiza todos os dados da empresa
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*
@@ -31,20 +31,13 @@
   scriptInfo.setAttribute(
     'data-function',
     `
-function atualizarDados() {
-    // Salva o value de input#EmpNewID
     const empNewIdValue = document.querySelector('input#EmpNewID').value;
-    // Pega e formata o valor de CNPJ
     const cnpjValue = document.querySelector('input#EmpCNPJ').value;
     const cnpjSemFormatacao = cnpjValue.replace(/\D/g, '');
-    // Atualiza o valor do CNPJ
     document.querySelector('input#EmpCNPJ').value = cnpjSemFormatacao;
     buscaCNPJ(cadastro.EmpCNPJ.value);
-    // Timeout de 1500ms antes de restaurar o CNPJ original e iniciar as verificações
     setTimeout(() => {
-        // Restaura o valor original do CNPJ
         document.querySelector('input#EmpCNPJ').value = cnpjValue;
-        // Função para verificar e deletar cada div de forma assíncrona
         async function processarDivs() {
             let index = 1;
             let divCtt;
@@ -57,7 +50,6 @@ function atualizarDados() {
                     // Se não possuem valor, chama a função delCttDirect com os argumentos corretos
                     const idArgument = \`0_${index}\`;
                     delCttDirect(idArgument, empNewIdValue);
-                    // Espera 500ms e clica no botão de confirmação
                     await new Promise(resolve => setTimeout(resolve, 500));
                     const confirmButton = document.querySelector('div.swal2-modal div.swal2-actions button.swal2-confirm.btn.btn-danger.marginZ');
                     if (confirmButton) {
@@ -69,10 +61,8 @@ function atualizarDados() {
                 index++;
             }
         }
-        // Chama a função para processar as divs
         processarDivs();
     }, 1500);
-}
 `
   );
 
