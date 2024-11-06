@@ -22,7 +22,6 @@
     scriptInfo.setAttribute('data-name', 'Excluir obrigações dp - Pessoal');
     scriptInfo.setAttribute('data-department', 'Pessoal');
     scriptInfo.setAttribute('data-function', `
-            function() {
             const divODP = document.querySelector('div#divObrDpt3 div#ODP_3');
             const divODPNome = document.querySelector('div#divObrDpt3 div#ODP_3 div#ObrNome_3');
             const selects = divODP.querySelectorAll('select');
@@ -51,7 +50,6 @@
                 }, 1500);
             }
             executarSequencia();
-        };
 
     `);
     document.body.appendChild(scriptInfo);
