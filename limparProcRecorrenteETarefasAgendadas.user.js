@@ -44,4 +44,5 @@
                 document.querySelector('button.swal2-confirm.btn.btn-danger.marginZ').click();
             });
   `);
+  document.body.appendChild(scriptInfo);
 })();
