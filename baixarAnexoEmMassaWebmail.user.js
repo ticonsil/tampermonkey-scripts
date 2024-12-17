@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Baixar anexo em massa no webmail - Geral
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      2.0
 // @description  Baixa todos os anexos do e-mail, mas é necessário clicar com o botão direito em um dos anexos e ir em inspecionar para abrir o console
 // @author       TIConsil
 // @match        https://webmail.consilcontabilidade.com/*
