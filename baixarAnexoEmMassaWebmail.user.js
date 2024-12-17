@@ -10,54 +10,83 @@
 // @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/baixarAnexoEmMassaWebmail.user.js
 // ==/UserScript==
 
-(function() {
-    'use strict';
-    if (document.querySelector(`.script-item[data-name="Baixar anexo em massa no webmail - Geral"]`)) return;
+(function () {
+  'use strict';
+  if (
+    document.querySelector(
+      `.script-item[data-name="Baixar anexo em massa no webmail - Geral"]`
+    )
+  )
+    return;
 
+  let scriptInfo = document.createElement('div');
+  scriptInfo.className = 'script-item';
+  scriptInfo.style.display = 'none';
+  scriptInfo.setAttribute('data-site', 'webmail.consilcontabilidade.com');
+  scriptInfo.setAttribute(
+    'data-name',
+    'Baixar anexo em massa no webmail - Geral'
+  );
+  scriptInfo.setAttribute('data-department', 'Geral');
+  scriptInfo.setAttribute(
+    'data-function',
+    `
+    function downloadAttachments() {
+   
+    const messageContent = document.getElementById('message-content');
+    
+    
+    if (!messageContent) {
+        console.error('Div message-content não encontrada');
+        return;
+    }
+    
+   
+    const attachmentLinks = Array.from(
+        messageContent.querySelector('#attachment-list')?.querySelectorAll('li')
+    ).map(li => li.querySelector('a'));
+    
+   
+    if (attachmentLinks.length === 0) {
+        console.error('Nenhum link de anexo encontrado');
+        return;
+    }
+    
+    // Modifica os links adicionando &_download=1
+    const downloadLinks = Array.from(attachmentLinks)
+        .map(link => {
+            const originalHref = link.href;
+            return originalHref + (originalHref.includes('?') ? '&' : '?') + '_download=1';
+        });
+    
+    // Função para download sequencial
+    function downloadSequentially(links, index = 0) {
+	
+        if (index >= links.length) return;
+        
+        const link = links[index];
+        console.log(link);
+       
 
-    let scriptInfo = document.createElement('div');
-    scriptInfo.className = 'script-item';
-    scriptInfo.style.display = 'none';
-    scriptInfo.setAttribute('data-site', 'webmail.consilcontabilidade.com');
-    scriptInfo.setAttribute('data-name', 'Baixar anexo em massa no webmail - Geral');
-    scriptInfo.setAttribute('data-department', 'Geral');
-    scriptInfo.setAttribute('data-function', `
-            const attachmentList = document.querySelector('#attachment-list');
-
-if (attachmentList) {
-    // Obtém todos os elementos li dentro da ul
-    const listItems = attachmentList.querySelectorAll('li');
-
-    // Itera sobre cada li
-    listItems.forEach((listItem, index) => {
-        // Encontra o link 'a' com href='#'
-        const anchor = listItem.querySelector('a[href="#"]');
-
-        if (anchor) {
-            // Cria um timeout para espaçar as ações
-            setTimeout(() => {
-                // Simula um clique no link
-                anchor.click();
-
-                // Espera 700ms antes de procurar o link de download global
-                setTimeout(() => {
-                    const downloadLink = document.querySelector('a#attachmenudownload');
-
-                    if (downloadLink) {
-                        downloadLink.click();
-                    } else {
-                        console.warn('Link de download não encontrado após clicar no item ' + (index + 1));
-                    }
-                }, 700); // Aguarda 700ms para garantir que o submenu carregue
-            }, index * 1400); // 1400ms entre cada iteração para evitar sobreposição
-        } else {
-            console.warn('Anchor com href="#" não encontrado no item ' + (index + 1));
-        }
-    });
-} else {
-    console.error('A lista de anexos (#attachment-list) não foi encontrada.');
+        const tempLink = document.createElement('a');
+        tempLink.href = link;
+        tempLink.setAttribute('download', '');
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+        
+        setTimeout(() => {
+            downloadSequentially(links, index + 1);
+        }, 500); // Delay de 500ms entre os downloads
+    }
+    
+    downloadSequentially(downloadLinks);
 }
 
-    `);
-    document.body.appendChild(scriptInfo);
+
+downloadAttachments();
+
+    `
+  );
+  document.body.appendChild(scriptInfo);
 })();
