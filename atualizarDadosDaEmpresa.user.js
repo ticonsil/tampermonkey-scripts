@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Atualizar Dados da Empresa
 // @namespace    http://tampermonkey.net/
-// @version      5.1
+// @version      5.2
 // @description  Atualiza todos os dados da empresa
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*
@@ -31,6 +31,7 @@
   scriptInfo.setAttribute(
     'data-function',
     `
+    function atualizarDados() {
     const empNewIdValue = document.querySelector('input#EmpNewID').value;
     const cnpjValue = document.querySelector('input#EmpCNPJ').value;
     const cnpjSemFormatacao = cnpjValue.replace(/\D/g, '');
@@ -42,13 +43,13 @@
             let index = 1;
             let divCtt;
             // Loop para percorrer todas as divs que começam com divCtt_0_
-            while ((divCtt = document.querySelector(\`#divCtt_0_${index}\`)) !== null) {
+            while ((divCtt = document.querySelector('#divCtt_0_' + index})) !== null) {
                 const oitavoInput = divCtt.querySelectorAll('input')[7];
                 const segundoInput = divCtt.querySelector('div.input-group input:nth-of-type(2)');
                 // Verifica se os inputs possuem valor
                 if (!oitavoInput.value && !segundoInput.value) {
                     // Se não possuem valor, chama a função delCttDirect com os argumentos corretos
-                    const idArgument = \`0_${index}\`;
+                    const idArgument = '0_' + index;
                     delCttDirect(idArgument, empNewIdValue);
                     await new Promise(resolve => setTimeout(resolve, 500));
                     const confirmButton = document.querySelector('div.swal2-modal div.swal2-actions button.swal2-confirm.btn.btn-danger.marginZ');
@@ -63,6 +64,8 @@
         }
         processarDivs();
     }, 1500);
+}
+    atualizarDados();
 `
   );
 
