@@ -6,8 +6,8 @@
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*
 // @grant        none
-// @downloadURL  
-// @updateURL    
+// @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/deleteTaskDF.user.js
+// @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/deleteTaskDF.user.js
 // ==/UserScript==
 
 (function() {
@@ -23,7 +23,7 @@
     scriptInfo.setAttribute('data-department', 'Fiscal');
     scriptInfo.setAttribute('data-function', `
             const divODP = document.querySelector('div#divObrDpt2 div#ODP_2');
-            const divODPNome = document.querySelector('div#divObrDpt2 div#ODP_2 div#ObrNome_3');
+            const divODPNome = document.querySelector('div#divObrDpt2 div#ODP_2 div#ObrNome_3'); // Independente do departamento, o obrnome_3 se mantem
             const selects = divODP.querySelectorAll('select');
             const selectNome = divODPNome.querySelectorAll('select');
 

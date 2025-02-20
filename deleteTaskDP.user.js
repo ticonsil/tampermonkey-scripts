@@ -23,7 +23,7 @@
     scriptInfo.setAttribute('data-department', 'Pessoal');
     scriptInfo.setAttribute('data-function', `
             const divODP = document.querySelector('div#divObrDpt3 div#ODP_3');
-            const divODPNome = document.querySelector('div#divObrDpt3 div#ODP_3 div#ObrNome_3'); // Independente do dp, o obrnome_3 se mantem
+            const divODPNome = document.querySelector('div#divObrDpt3 div#ODP_3 div#ObrNome_3'); // Independente do departamento, o obrnome_3 se mantem
             const selects = divODP.querySelectorAll('select');
             const selectNome = divODPNome.querySelectorAll('select');
 
