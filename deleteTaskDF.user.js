@@ -1,29 +1,29 @@
 // ==UserScript==
-// @name         Excluir obrigações dp - Pessoal
+// @name         Excluir obrigações df - Fiscal
 // @namespace    http://tampermonkey.net/
-// @version      3.1
+// @version      0.1
 // @description  Exclui todas as obrigações do dp na aba de empresas
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/deleteTaskDP.user.js
-// @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/deleteTaskDP.user.js
+// @downloadURL  
+// @updateURL    
 // ==/UserScript==
 
 (function() {
     'use strict';
-    if (document.querySelector(`.script-item[data-name="Excluir obrigações dp - Pessoal"]`)) return;
+    if (document.querySelector(`.script-item[data-name="Excluir obrigações df - Fiscal"]`)) return;
 
 
     let scriptInfo = document.createElement('div');
     scriptInfo.className = 'script-item';
     scriptInfo.style.display = 'none';
     scriptInfo.setAttribute('data-site', 'https://app.acessorias.com/sysmain.php?m=105*');
-    scriptInfo.setAttribute('data-name', 'Excluir obrigações dp - Pessoal');
-    scriptInfo.setAttribute('data-department', 'Pessoal');
+    scriptInfo.setAttribute('data-name', 'Excluir obrigações df - Fiscal');
+    scriptInfo.setAttribute('data-department', 'Fiscal');
     scriptInfo.setAttribute('data-function', `
-            const divODP = document.querySelector('div#divObrDpt3 div#ODP_3');
-            const divODPNome = document.querySelector('div#divObrDpt3 div#ODP_3 div#ObrNome_3'); // Independente do dp, o obrnome_3 se mantem
+            const divODP = document.querySelector('div#divObrDpt2 div#ODP_2');
+            const divODPNome = document.querySelector('div#divObrDpt2 div#ODP_2 div#ObrNome_3');
             const selects = divODP.querySelectorAll('select');
             const selectNome = divODPNome.querySelectorAll('select');
 
