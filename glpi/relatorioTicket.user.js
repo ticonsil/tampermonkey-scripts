@@ -983,9 +983,11 @@
   }
 
   // Inicializa o script quando o DOM estiver carregado
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  const interval = setInterval(() => {
+    const btn = document.querySelector('button.btn.btn-primary.dropdown-toggle');
+    if (btn) {
+      init();
+      clearInterval(interval); // para de procurar depois de encontrar
+    }
+  }, 500); // verifica a cada meio segundo
 })();
