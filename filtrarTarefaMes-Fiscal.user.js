@@ -12,6 +12,9 @@
 (function () {
   'use strict';
 
+  const prev = document.querySelector('[name="previous-month"]');
+  prev[0].click();
+
   if (
     document.querySelector(
       `.script-item[data-name="Filtrar Tarefas do mês - Fiscal"]`

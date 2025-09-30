@@ -12,6 +12,12 @@
 
 (function () {
   'use strict';
+
+
+  
+
+
+
   if (
     document.querySelector(
       `.script-item[data-name="Limpar Proc Recorrente e Tarefas Agendadas"]`
