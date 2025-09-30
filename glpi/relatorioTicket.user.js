@@ -6,6 +6,8 @@
 // @author       TIConsil
 // @match        http://ticket.consilcontabilidade.com/front/ticket.form.php*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=glpi-project.org
+// @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/glpi/relatorioTicket.user.js
+// @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/glpi/relatorioTicket.user.js
 // @grant        none
 // ==/UserScript==
 
