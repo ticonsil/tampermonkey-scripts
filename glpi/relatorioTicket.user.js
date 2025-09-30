@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Relatório expedição
 // @namespace    http://tampermonkey.net/
-// @version      30-09-2025
+// @version      01-10-2025
 // @description  Exporta para impressão um relatório padronizado para o departamento expedição
 // @author       TIConsil
 // @match        http://ticket.consilcontabilidade.com/front/ticket.form.php*
