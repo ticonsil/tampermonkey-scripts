@@ -17,7 +17,7 @@
 
   // Configurações principais
   const CONFIG = {
-    BUTTON_SELECTOR: '.filter-timeline.position-relative.ms-auto',
+    BUTTON_SELECTOR: '.filter-timeline.position-relative',
     TITLE_SELECTOR: '.navigationheader-title',
     RICH_TEXT_SELECTOR: '.rich_text_container',
     ACTOR_SELECTOR: '.actor_text',
