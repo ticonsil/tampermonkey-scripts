@@ -2,12 +2,12 @@
 // @name         Excluir obrigações df - Fiscal
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  Exclui todas as obrigações do dp na aba de empresas
+// @description  Exclui todas as obrigações do fiscal na aba de empresas
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/deleteTaskDF.user.js
-// @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/deleteTaskDF.user.js
+// @downloadURL  https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/acessorias/Empresas/deleteTaskDF.user.js
+// @updateURL    https://raw.githubusercontent.com/ticonsil/tampermonkey-scripts/main/acessorias/Empresas/deleteTaskDF.user.js
 // ==/UserScript==
 
 (function() {
