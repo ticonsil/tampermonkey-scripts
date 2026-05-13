@@ -12,9 +12,10 @@
 
 (function () {
   'use strict';
+  const nomeScript = 'Adicionar obrigação Planejamento - Fiscal'
   if (
     document.querySelector(
-      `.script-item[data-name="Excluir obrigações df - Fiscal"]`,
+      `.script-item[data-name=${nomeScript}]`,
     )
   )
     return;
@@ -26,7 +27,7 @@
     'data-site',
     'https://app.acessorias.com/sysmain.php?m=105*',
   );
-  scriptInfo.setAttribute('data-name', 'Excluir obrigações df - Fiscal');
+  scriptInfo.setAttribute('data-name', `${nomeScript}`);
   scriptInfo.setAttribute('data-department', 'Fiscal');
   scriptInfo.setAttribute(
     'data-function',
@@ -80,4 +81,5 @@ adicionarObrigacoes();
     `,
   );
   document.body.appendChild(scriptInfo);
+
 })();
