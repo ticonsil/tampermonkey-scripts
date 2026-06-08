@@ -6,8 +6,8 @@
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=105*
 // @grant        none
-// @downloadURL  https://github.com/ticonsil/tampermonkey-scripts/raw/refs/heads/main/acessorias/Gest%C3%A3o%20de%20Processos/onboardingEmMassa.user.js
-// @updateURL    https://github.com/ticonsil/tampermonkey-scripts/raw/refs/heads/main/acessorias/Gest%C3%A3o%20de%20Processos/onboardingEmMassa.user.js
+// @downloadURL  https://github.com/ticonsil/tampermonkey-scripts/raw/refs/heads/main/acessorias/Empresas/InativarEmpresa.user.js
+// @updateURL    https://github.com/ticonsil/tampermonkey-scripts/raw/refs/heads/main/acessorias/Empresas/InativarEmpresa.user.js
 // ==/UserScript==
 (function () {
   'use strict';
