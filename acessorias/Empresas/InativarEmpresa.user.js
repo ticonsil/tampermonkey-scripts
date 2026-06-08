@@ -14,7 +14,7 @@
 
   if (
     document.querySelector(
-      `.script-item[data-name="Cadastrar Onboarding em Massa"]`,
+      `.script-item[data-name="Inativar empresa"]`,
     )
   )
     return;
