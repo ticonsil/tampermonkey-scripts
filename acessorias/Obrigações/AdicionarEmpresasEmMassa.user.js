@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Onboarding em Massa
+// @name         Adicionar empresas em massa
 // @namespace    http://tampermonkey.net/
 // @version      5.2
 // @description  Adiciona empresas em massa em uma obrigação
