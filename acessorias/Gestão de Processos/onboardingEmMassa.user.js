@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Onboarding em Massa
 // @namespace    http://tampermonkey.net/
-// @version      5.3
+// @version      1.0
 // @description  Cadastrar Onboarding em Massa
 // @author       TIConsil
 // @match        https://app.acessorias.com/sysmain.php?m=125*
