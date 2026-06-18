@@ -29,7 +29,7 @@
     'data-function',
     `
 const processos   = [323, 322, 324, 321, 320];
-const responsaveis = [59459, 91751, 60804, 60815, 94707];
+const responsaveis = [59459, 91751, 229029, 60815, 94707];
 let empresas = [];
 let empresaAtual  = 0;
 let processoAtual = 0;
