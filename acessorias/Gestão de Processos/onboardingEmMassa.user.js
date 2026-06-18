@@ -121,6 +121,9 @@ function criarModal() {
         overlay.remove();
         empresaAtual  = 0;
         processoAtual = 0;
+        totalCadastros = empresas.length * processos.length;
+        cadastrosConcluidos = 0;
+        criarModalProgresso();
         preencherFormulario();
         cadastro.onsubmit = enviarFormulario;
         enviarFormulario();
@@ -156,8 +159,175 @@ function descP(inputy) {
     }
 }
 
+// ─── MODAL DE PROGRESSO ───────────────────────────────────────────────────────
+function criarModalProgresso() {
+    const jaExiste = document.getElementById('onboarding-progresso-modal');
+    if (jaExiste) jaExiste.remove();
+
+    const totalCadastros = empresas.length * processos.length;
+
+    const overlay = document.createElement('div');
+    overlay.id = 'onboarding-progresso-modal';
+    overlay.style.cssText = [
+        'position:fixed', 'inset:0', 'background:rgba(0,0,0,.55)',
+        'z-index:99999', 'display:flex', 'align-items:center', 'justify-content:center'
+    ].join(';');
+
+    const box = document.createElement('div');
+    box.style.cssText = [
+        'background:#fff', 'padding:28px 32px', 'border-radius:10px',
+        'width:520px', 'max-width:95vw', 'box-shadow:0 6px 24px rgba(0,0,0,.25)',
+        'font-family:Arial,sans-serif', 'display:flex', 'flex-direction:column', 'gap:14px'
+    ].join(';');
+
+    // Cabeçalho
+    const header = document.createElement('div');
+    header.style.cssText = 'display:flex;align-items:center;justify-content:space-between;';
+
+    const titulo = document.createElement('h3');
+    titulo.textContent = 'Onboarding em Massa — Progresso';
+    titulo.style.cssText = 'margin:0;color:#222;font-size:17px;';
+
+    const badge = document.createElement('span');
+    badge.id = 'ob-badge';
+    badge.textContent = '0 / ' + totalCadastros;
+    badge.style.cssText = [
+        'background:#e3f0ff', 'color:#0056b3', 'font-size:12px', 'font-weight:bold',
+        'padding:3px 10px', 'border-radius:20px'
+    ].join(';');
+
+    header.appendChild(titulo);
+    header.appendChild(badge);
+
+    // Barra de progresso
+    const barraWrap = document.createElement('div');
+    barraWrap.style.cssText = [
+        'background:#e9ecef', 'border-radius:6px', 'height:10px', 'overflow:hidden'
+    ].join(';');
+
+    const barra = document.createElement('div');
+    barra.id = 'ob-barra';
+    barra.style.cssText = [
+        'height:100%', 'width:0%', 'background:linear-gradient(90deg,#007bff,#00c6ff)',
+        'border-radius:6px', 'transition:width .4s ease'
+    ].join(';');
+
+    barraWrap.appendChild(barra);
+
+    // Status atual
+    const statusAtual = document.createElement('p');
+    statusAtual.id = 'ob-status-atual';
+    statusAtual.textContent = 'Iniciando…';
+    statusAtual.style.cssText = 'margin:0;color:#555;font-size:13px;';
+
+    // Lista de logs
+    const listaWrap = document.createElement('div');
+    listaWrap.style.cssText = [
+        'background:#f8f9fa', 'border:1px solid #dee2e6', 'border-radius:6px',
+        'padding:12px 14px', 'max-height:260px', 'overflow-y:auto',
+        'display:flex', 'flex-direction:column', 'gap:6px'
+    ].join(';');
+    listaWrap.id = 'ob-lista-logs';
+
+    // Rodapé
+    const rodape = document.createElement('div');
+    rodape.style.cssText = 'display:flex;justify-content:flex-end;';
+
+    const btnFechar = document.createElement('button');
+    btnFechar.id = 'ob-btn-fechar';
+    btnFechar.textContent = 'Fechar';
+    btnFechar.disabled = true;
+    btnFechar.style.cssText = [
+        'padding:8px 22px', 'background:#6c757d', 'color:#fff',
+        'border:none', 'border-radius:6px', 'cursor:not-allowed', 'font-size:14px',
+        'opacity:.5', 'transition:opacity .2s'
+    ].join(';');
+    btnFechar.onclick = function () { overlay.remove(); };
+
+    rodape.appendChild(btnFechar);
+
+    box.appendChild(header);
+    box.appendChild(barraWrap);
+    box.appendChild(statusAtual);
+    box.appendChild(listaWrap);
+    box.appendChild(rodape);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+}
+
+function adicionarLog(mensagem, tipo) {
+    // tipo: 'info' | 'success' | 'error'
+    const lista = document.getElementById('ob-lista-logs');
+    if (!lista) return;
+
+    const cores = {
+        info:    { bg: '#e8f4fd', borda: '#b8daff', icon: 'ℹ️', texto: '#0c5460' },
+        success: { bg: '#e8f8e8', borda: '#b2dfdb', icon: '✅', texto: '#1b5e20' },
+        error:   { bg: '#fdecea', borda: '#f5c6cb', icon: '❌', texto: '#7f0000' },
+    };
+    const c = cores[tipo] || cores.info;
+
+    const item = document.createElement('div');
+    item.style.cssText = [
+        'display:flex', 'align-items:flex-start', 'gap:8px',
+        'background:' + c.bg, 'border:1px solid ' + c.borda,
+        'border-radius:5px', 'padding:7px 10px', 'font-size:12px', 'color:' + c.texto
+    ].join(';');
+
+    const hora = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+    const icone = document.createElement('span');
+    icone.textContent = c.icon;
+    icone.style.cssText = 'flex-shrink:0;font-size:13px;line-height:1.4;';
+
+    const texto = document.createElement('span');
+    texto.style.cssText = 'flex:1;line-height:1.5;';
+    texto.innerHTML = '<span style="color:#999;margin-right:6px;">' + hora + '</span>' + mensagem;
+
+    item.appendChild(icone);
+    item.appendChild(texto);
+    lista.appendChild(item);
+
+    // Rola para o último log automaticamente
+    lista.scrollTop = lista.scrollHeight;
+}
+
+function atualizarProgresso(concluidos, total, empresa, processo) {
+    const pct = Math.round((concluidos / total) * 100);
+
+    const barra = document.getElementById('ob-barra');
+    if (barra) barra.style.width = pct + '%';
+
+    const badge = document.getElementById('ob-badge');
+    if (badge) badge.textContent = concluidos + ' / ' + total;
+
+    const status = document.getElementById('ob-status-atual');
+    if (status) status.textContent = 'Enviando — Empresa: ' + empresa + ' | Processo: ' + processo + ' (' + pct + '%)';
+}
+
+function finalizarProgresso(totalCadastros) {
+    const barra = document.getElementById('ob-barra');
+    if (barra) { barra.style.width = '100%'; barra.style.background = 'linear-gradient(90deg,#28a745,#81c784)'; }
+
+    const badge = document.getElementById('ob-badge');
+    if (badge) { badge.textContent = totalCadastros + ' / ' + totalCadastros; badge.style.background = '#e8f8e8'; badge.style.color = '#1b5e20'; }
+
+    const status = document.getElementById('ob-status-atual');
+    if (status) { status.textContent = '✅ Todos os cadastros foram concluídos!'; status.style.color = '#1b5e20'; status.style.fontWeight = 'bold'; }
+
+    const btn = document.getElementById('ob-btn-fechar');
+    if (btn) { btn.disabled = false; btn.style.cursor = 'pointer'; btn.style.opacity = '1'; btn.style.background = '#28a745'; }
+}
+
+// ─── CONTROLE DE PROGRESSO ────────────────────────────────────────────────────
+let totalCadastros = 0;
+let cadastrosConcluidos = 0;
+
 function enviarFormulario(event) {
     if (event) event.preventDefault();
+
+    atualizarProgresso(cadastrosConcluidos, totalCadastros, empresas[empresaAtual], processos[processoAtual]);
+    adicionarLog('Enviando empresa <b>' + empresas[empresaAtual] + '</b> — processo <b>' + processos[processoAtual] + '</b>…', 'info');
 
     var formData = new FormData(cadastro);
 
@@ -168,11 +338,15 @@ function enviarFormulario(event) {
         processData: false,
         contentType: false,
         success: function (response) {
+            cadastrosConcluidos++;
             console.log('Formulário enviado com sucesso! Empresa: ' + empresas[empresaAtual] + ', Processo: ' + processos[processoAtual]);
+            adicionarLog('Sucesso — empresa <b>' + empresas[empresaAtual] + '</b>, processo <b>' + processos[processoAtual] + '</b>', 'success');
             proximoCadastro();
         },
         error: function (xhr, status, error) {
+            cadastrosConcluidos++;
             console.error('Erro ao enviar formulário:', error);
+            adicionarLog('Erro — empresa <b>' + empresas[empresaAtual] + '</b>, processo <b>' + processos[processoAtual] + '</b>: ' + error, 'error');
             proximoCadastro();
         }
     });
@@ -192,6 +366,7 @@ function proximoCadastro() {
         }, 2000);
     } else {
         console.log("Todos os cadastros foram concluídos!");
+        finalizarProgresso(totalCadastros);
     }
 }
 
